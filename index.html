@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>クロスの学び舎 | ラクロス研究サイト</title>
+<meta name="description" content="ラクロスの歴史・ルール・技術を学ぶための個人研究サイト。">
+<meta name="robots" content="noai, noimageai">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#132339;
+    --navy-deep:#0b1626;
+    --bone:#f8f3e8;
+    --bone-dim:#eee6d3;
+    --red:#a3372f;
+    --red-deep:#7c261f;
+    --ochre:#bd8a3a;
+    --wood:#4a2e1e;
+    --line: rgba(248,243,232,0.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bone);
+    color:var(--navy-deep);
+    font-family:'Noto Sans JP', sans-serif;
+    line-height:1.9;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.jp-serif{
+    font-family:'Shippori Mincho', serif;
+    letter-spacing:.02em;
+  }
+  .eyebrow{
+    font-family:'Oswald', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:.28em;
+    font-size:.72rem;
+    font-weight:500;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  /* ---------- mesh signature pattern ---------- */
+  .mesh-divider{width:100%;height:34px;display:block;}
+  .mesh-line{stroke-width:1.1;fill:none;}
+
+  /* ---------- header / nav ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--navy);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1080px;margin:0 auto;padding:0 32px;
+    display:flex;align-items:center;justify-content:space-between;
+    height:72px;
+  }
+  .brand{
+    color:var(--bone);
+    font-family:'Shippori Mincho', serif;
+    font-size:1.28rem;
+    font-weight:700;
+    display:flex;align-items:center;gap:10px;
+  }
+  .brand svg{width:26px;height:26px;flex-shrink:0;}
+  nav ul{list-style:none;display:flex;gap:2px;}
+  nav a{
+    color:var(--bone-dim);
+    font-size:.86rem;
+    padding:10px 16px;
+    position:relative;
+    letter-spacing:.04em;
+    transition:color .2s ease;
+  }
+  nav a:hover{color:var(--bone);}
+  nav a.current{color:var(--bone);}
+  nav a.current::after{
+    content:"";position:absolute;left:16px;right:16px;bottom:6px;height:2px;
+    background:var(--red);
+  }
+  .menu-toggle{display:none;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    background:var(--navy);
+    position:relative;
+    overflow:hidden;
+    padding:104px 0 92px;
+    color:var(--bone);
+  }
+  .hero-mesh{
+    position:absolute;inset:0;
+    opacity:.16;
+    pointer-events:none;
+  }
+  .hero-inner{
+    position:relative;z-index:2;
+    max-width:1080px;margin:0 auto;padding:0 32px;
+  }
+  .hero .eyebrow{color:var(--ochre);margin-bottom:22px;display:block;}
+  .hero h1{
+    font-size:clamp(2.4rem, 5.6vw, 4.1rem);
+    font-weight:800;
+    line-height:1.35;
+    max-width:11.5em;
+  }
+  .hero h1 span{color:var(--red);}
+  .hero p{
+    margin-top:26px;
+    max-width:38em;
+    color:var(--bone-dim);
+    font-weight:300;
+    font-size:1.02rem;
+  }
+  .hero-foot{
+    margin-top:44px;
+    display:flex;gap:14px;flex-wrap:wrap;align-items:center;
+  }
+  .btn{
+    display:inline-block;
+    padding:13px 30px;
+    font-size:.86rem;
+    letter-spacing:.06em;
+    border:1px solid var(--red);
+    background:var(--red);
+    color:var(--bone);
+    transition:background .2s ease, color .2s ease, border-color .2s ease;
+  }
+  .btn:hover{background:transparent;color:var(--red);}
+  .btn.ghost{background:transparent;border-color:var(--line);color:var(--bone-dim);}
+  .btn.ghost:hover{border-color:var(--bone);color:var(--bone);}
+
+  /* ---------- section shell ---------- */
+  section{padding:88px 0;}
+  .section-head{margin-bottom:52px;}
+  .section-head .eyebrow{color:var(--red);margin-bottom:14px;display:block;}
+  .section-head h2{
+    font-size:clamp(1.5rem, 3vw, 2.05rem);
+    color:var(--navy-deep);
+  }
+  .section-head p{
+    margin-top:16px;max-width:42em;color:#4b4638;font-size:.95rem;
+  }
+
+  /* ---------- origin block (roots) ---------- */
+  .origin{
+    background:var(--bone-dim);
+    border-top:1px solid #e2d6b9;
+    border-bottom:1px solid #e2d6b9;
+  }
+  .origin-grid{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:60px;align-items:center;
+  }
+  .origin-badge{
+    width:64px;height:64px;margin-bottom:24px;
+  }
+  .origin h2{font-size:clamp(1.5rem,3vw,2.05rem);margin-bottom:20px;}
+  .origin p{color:#4b4638;font-size:.94rem;margin-bottom:14px;}
+  .origin p strong{color:var(--navy);font-weight:500;}
+  .diamond-frame{
+    position:relative;
+    border:1px solid var(--ochre);
+    padding:34px;
+    background:var(--bone);
+  }
+  .diamond-frame::before{
+    content:"";position:absolute;top:-9px;left:-9px;right:-9px;bottom:-9px;
+    border:1px solid rgba(189,138,58,.35);
+    pointer-events:none;
+  }
+  .diamond-frame h3{font-size:1.05rem;color:var(--wood);margin-bottom:12px;}
+  .diamond-frame ul{list-style:none;font-size:.88rem;color:#4b4638;}
+  .diamond-frame li{
+    padding:9px 0;border-bottom:1px dashed #d8cba4;
+    display:flex;justify-content:space-between;gap:16px;
+  }
+  .diamond-frame li:last-child{border-bottom:none;}
+  .diamond-frame li span:first-child{color:var(--navy);font-weight:500;}
+
+  /* ---------- content nav cards ---------- */
+  .card-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:#e2d6b9;
+    border:1px solid #e2d6b9;
+  }
+  .card{
+    background:var(--bone);
+    padding:38px 30px;
+    position:relative;
+    transition:background .25s ease;
+  }
+  .card:hover{background:#fffdf8;}
+  .card .num{
+    font-family:'Oswald',sans-serif;
+    font-size:.74rem;
+    letter-spacing:.2em;
+    color:var(--ochre);
+    display:block;margin-bottom:18px;
+  }
+  .card h3{font-size:1.18rem;color:var(--navy-deep);margin-bottom:10px;}
+  .card p{font-size:.87rem;color:#5a543f;margin-bottom:22px;}
+  .card .go{
+    font-family:'Oswald',sans-serif;
+    font-size:.76rem;letter-spacing:.14em;
+    color:var(--red);
+    display:inline-flex;align-items:center;gap:8px;
+  }
+  .card .go svg{width:14px;height:14px;transition:transform .2s ease;}
+  .card:hover .go svg{transform:translateX(4px);}
+
+  /* ---------- glossary strip ---------- */
+  .glossary{background:var(--navy);color:var(--bone);}
+  .glossary .section-head .eyebrow{color:var(--ochre);}
+  .glossary .section-head h2{color:var(--bone);}
+  .glossary .section-head p{color:var(--bone-dim);}
+  .term-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .term{padding:26px 28px;background:var(--navy-deep);}
+  .term .en{font-family:'Oswald',sans-serif;font-size:.72rem;letter-spacing:.16em;color:var(--red);}
+  .term h4{font-size:1.02rem;margin:8px 0 8px;color:var(--bone);font-weight:700;}
+  .term p{font-size:.85rem;color:var(--bone-dim);}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--navy-deep);color:var(--bone-dim);padding:70px 0 30px;}
+  .foot-grid{
+    display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:48px;
+    padding-bottom:44px;border-bottom:1px solid var(--line);
+  }
+  footer h3{font-family:'Shippori Mincho',serif;color:var(--bone);font-size:1.1rem;margin-bottom:16px;}
+  footer p{font-size:.85rem;line-height:1.85;}
+  footer ul{list-style:none;font-size:.85rem;}
+  footer li{margin-bottom:10px;}
+  footer a:hover{color:var(--red);}
+  .foot-form{display:flex;flex-direction:column;gap:10px;margin-top:6px;}
+  .foot-form input,.foot-form textarea{
+    background:var(--navy);border:1px solid var(--line);color:var(--bone);
+    padding:10px 12px;font-family:inherit;font-size:.85rem;
+  }
+  .foot-form textarea{resize:vertical;min-height:70px;}
+  .foot-form button{
+    align-self:flex-start;margin-top:4px;
+    background:var(--red);color:var(--bone);border:none;
+    padding:10px 24px;font-family:'Oswald',sans-serif;letter-spacing:.1em;font-size:.78rem;
+    cursor:pointer;transition:background .2s ease;
+  }
+  .foot-form button:hover{background:var(--red-deep);}
+  .foot-bottom{
+    padding-top:26px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:.76rem;color:#7a8195;
+  }
+  .noai{max-width:640px;line-height:1.7;}
+
+  @media (max-width:860px){
+    .origin-grid{grid-template-columns:1fr;gap:36px;}
+    .card-grid{grid-template-columns:1fr;}
+    .term-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;gap:36px;}
+  }
+  @media (max-width:640px){
+    nav{display:none;}
+    .menu-toggle{
+      display:inline-flex;background:none;border:none;color:var(--bone);
+      font-family:'Oswald',sans-serif;font-size:.76rem;letter-spacing:.1em;cursor:pointer;
+    }
+    nav.open{
+      display:flex;position:absolute;top:72px;left:0;right:0;
+      background:var(--navy);flex-direction:column;border-top:1px solid var(--line);
+    }
+    nav.open ul{flex-direction:column;width:100%;}
+    nav.open a{display:block;padding:16px 32px;border-bottom:1px solid var(--line);}
+    .hero{padding:70px 0 60px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="1" y="1" width="38" height="38" stroke="var(--red)" stroke-width="1.4"/><path d="M9 9L31 31M31 9L9 31M20 9V31M9 20H31" stroke="var(--bone)" stroke-width="0.9" opacity="0.7"/></svg>
+      クロスの学び舎
+    </a>
+    <button class="menu-toggle" id="menuToggle">MENU</button>
+    <nav id="mainNav">
+      <ul>
+        <li><a class="current" href="index.html">ホーム</a></li>
+        <li><a href="blog.html">日誌</a></li>
+        <li><a href="gallery.html">ギャラリー</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<svg class="mesh-divider" viewBox="0 0 1080 34" preserveAspectRatio="none" style="background:var(--navy)">
+  <g class="mesh-line" stroke="var(--ochre)" opacity="0.5">
+    <path d="M0 0 L54 34 M54 0 L108 34 M108 0 L162 34 M162 0 L216 34 M216 0 L270 34 M270 0 L324 34 M324 0 L378 34 M378 0 L432 34 M432 0 L486 34 M486 0 L540 34 M540 0 L594 34 M594 0 L648 34 M648 0 L702 34 M702 0 L756 34 M756 0 L810 34 M810 0 L864 34 M864 0 L918 34 M918 0 L972 34 M972 0 L1026 34 M1026 0 L1080 34"/>
+    <path d="M0 34 L54 0 M54 34 L108 0 M108 34 L162 0 M162 34 L216 0 M216 34 L270 0 M270 34 L324 0 M324 34 L378 0 M378 34 L432 0 M432 34 L486 0 M486 34 L540 0 M540 34 L594 0 M594 34 L648 0 M648 34 L702 0 M702 34 L756 0 M756 34 L810 0 M810 34 L864 0 M864 34 L918 0 M918 34 L972 0 M972 34 L1026 0 M1026 34 L1080 0"/>
+  </g>
+</svg>
+
+<section class="hero">
+  <svg class="hero-mesh" viewBox="0 0 1080 620" preserveAspectRatio="xMidYMid slice">
+    <g class="mesh-line" stroke="var(--bone)">
+      <path d="M0 0 L680 620 M90 0 L770 620 M180 0 L860 620 M270 0 L950 620 M360 0 L1040 620 M450 0 L1080 500 M540 0 L1080 380 M630 0 L1080 260 M720 0 L1080 140 M810 0 L1080 20"/>
+      <path d="M1080 0 L400 620 M990 0 L310 620 M900 0 L220 620 M810 0 L130 620 M720 0 L40 620 M630 0 L0 500 M540 0 L0 380 M450 0 L0 260 M360 0 L0 140 M270 0 L0 20"/>
+    </g>
+  </svg>
+  <div class="hero-inner">
+    <span class="eyebrow">LACROSSE STUDY NOTES</span>
+    <h1>クロスに宿る、<br>もっとも<span>古いスポーツ</span>を学ぶ</h1>
+    <p>ラクロスは北米大陸の先住民たちが「クリエイターズ・ゲーム」として何世紀も前から続けてきた球技にルーツを持つ。その歴史・ルール・戦術・道具を、個人的な学習記録としてこのサイトにまとめていく。</p>
+    <div class="hero-foot">
+      <a class="btn" href="blog.html">学習日誌を読む</a>
+      <a class="btn ghost" href="about.html">サイトについて</a>
+    </div>
+  </div>
+</section>
+
+<svg class="mesh-divider" viewBox="0 0 1080 34" preserveAspectRatio="none" style="background:var(--navy)">
+  <g class="mesh-line" stroke="var(--ochre)" opacity="0.5">
+    <path d="M0 0 L54 34 M54 0 L108 34 M108 0 L162 34 M162 0 L216 34 M216 0 L270 34 M270 0 L324 34 M324 0 L378 34 M378 0 L432 34 M432 0 L486 34 M486 0 L540 34 M540 0 L594 34 M594 0 L648 34 M648 0 L702 34 M702 0 L756 34 M756 0 L810 34 M810 0 L864 34 M864 0 L918 34 M918 0 L972 34 M972 0 L1026 34 M1026 0 L1080 34"/>
+    <path d="M0 34 L54 0 M54 34 L108 0 M108 34 L162 0 M162 34 L216 0 M216 34 L270 0 M270 34 L324 0 M324 34 L378 0 M378 34 L432 0 M432 34 L486 0 M486 34 L540 0 M540 34 L594 0 M594 34 L648 0 M648 34 L702 0 M702 34 L756 0 M756 34 L810 0 M810 34 L864 0 M864 34 L918 0 M918 34 L972 0 M972 34 L1026 0 M1026 34 L1080 0"/>
+  </g>
+</svg>
+
+<section class="origin">
+  <div class="wrap origin-grid">
+    <div>
+      <svg class="origin-badge" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="30" stroke="var(--red)" stroke-width="1.3"/>
+        <path d="M32 6V58M6 32H58M14 14L50 50M50 14L14 50" stroke="var(--ochre)" stroke-width="1"/>
+        <circle cx="32" cy="32" r="6" fill="var(--navy)"/>
+      </svg>
+      <h2>ルーツを尊重して学ぶ</h2>
+      <p>ラクロスの起源は、<strong>ハウデノサウニー(イロコイ)連邦</strong>をはじめとする北米先住民の諸部族が行っていた「スティックボール」にある。単なる競技ではなく、<strong>治癒の儀式・和解の手段・共同体の結束</strong>としての意味を持っていたことを、まず理解の出発点にしたい。</p>
+      <p>現代のフィールド/ボックスラクロスは19世紀以降にカナダで競技化され世界に広まったが、その名称(crosse=杖)も、道具の網目の構造も、すべて先住民の技術に由来する。このサイトでは競技のルールや戦術と並行して、その背景にある歴史にも敬意を持って触れていく。</p>
+    </div>
+    <div class="diamond-frame">
+      <h3>覚えておきたい基礎知識</h3>
+      <ul>
+        <li><span>起源地域</span><span>北米大陸(現在の米国北東部・カナダ)</span></li>
+        <li><span>先住民名称の一例</span><span>デハンチギワークス(セネカ語)等</span></li>
+        <li><span>近代競技化</span><span>1860年代 カナダ</span></li>
+        <li><span>主な形式</span><span>フィールド / ボックス / セブンス</span></li>
+        <li><span>道具の核心</span><span>クロス(スティック)の網 = ポケット</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">CONTENTS</span>
+      <h2>サイト内のコンテンツ</h2>
+      <p>学習記録・作品ギャラリー・自己紹介の3本立てで、少しずつ知識を積み重ねていく。</p>
+    </div>
+    <div class="card-grid">
+      <a class="card" href="blog.html">
+        <span class="num">01 / DIARY</span>
+        <h3>学習日誌</h3>
+        <p>日付とその日学んだこと・気づきだけを淡々と記録する日記形式のページ。</p>
+        <span class="go">READ MORE
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12H19M13 6L19 12L13 18"/></svg>
+        </span>
+      </a>
+      <a class="card" href="gallery.html">
+        <span class="num">02 / GALLERY</span>
+        <h3>ギャラリー</h3>
+        <p>用具・フィールド図解・観戦記録など、ラクロスにまつわる図版をまとめる予定。</p>
+        <span class="go">VIEW
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12H19M13 6L19 12L13 18"/></svg>
+        </span>
+      </a>
+      <a class="card" href="about.html">
+        <span class="num">03 / ABOUT</span>
+        <h3>About</h3>
+        <p>このサイトを作った経緯と、運営者について簡単に紹介するページ。</p>
+        <span class="go">ABOUT
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 12H19M13 6L19 12L13 18"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="glossary">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">FIRST WORDS</span>
+      <h2>最初に覚える用語</h2>
+      <p>学び始めにつまずきやすい基本用語を4つだけ先に押さえておく。</p>
+    </div>
+    <div class="term-grid">
+      <div class="term">
+        <span class="en">CROSSE</span>
+        <h4>クロス(スティック)</h4>
+        <p>先端に網(ポケット)が張られた専用スティック。ボールを保持・パス・シュートする唯一の道具。</p>
+      </div>
+      <div class="term">
+        <span class="en">POCKET</span>
+        <h4>ポケット</h4>
+        <p>クロス先端の網目部分。ボールを収める深さや張りが選手のプレースタイルを左右する。</p>
+      </div>
+      <div class="term">
+        <span class="en">CRADLING</span>
+        <h4>クレイドリング</h4>
+        <p>走りながらスティックを揺らしボールを網の中に留め続ける基本技術。</p>
+      </div>
+      <div class="term">
+        <span class="en">CREASE</span>
+        <h4>クリース</h4>
+        <p>ゴール前に描かれた円。ゴーリー保護のため相手選手の侵入が制限される。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>クロスの学び舎</h3>
+        <p>ラクロスの歴史・ルール・技術を独学でまとめていく個人研究サイトです。北米先住民に由来するこの競技のルーツに敬意を払いながら、学びを記録していきます。</p>
+      </div>
+      <div>
+        <h3>リンク</h3>
+        <ul>
+          <li><a href="https://azaleacreativeroom888.github.io/">Azalea Creative Room</a></li>
+          <li><a href="https://azaleacreativeroom888.github.io/links.html">全サイト一覧</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>お問い合わせ</h3>
+        <form class="foot-form" action="https://formspree.io/f/maqvpvoz" method="POST">
+          <input type="text" name="name" placeholder="お名前" required>
+          <input type="email" name="email" placeholder="メールアドレス" required>
+          <textarea name="message" placeholder="メッセージ" required></textarea>
+          <button type="submit">送信する</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p class="noai">本サイトのテキスト・画像・デザインはすべて生成AIの学習データとしての使用を禁じます。(No AI training on any text, images, or design on this site.)</p>
+      <p>&copy; 2026 クロスの学び舎</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mainNav');
+  if(toggle){
+    toggle.addEventListener('click', () => nav.classList.toggle('open'));
+  }
+</script>
+</body>
+</html>
