@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ギャラリー | クロスの学び舎</title>
+<meta name="description" content="ラクロスの道具・フィールド・網目パターンなどをまとめた図版ギャラリー。">
+<meta name="robots" content="noai, noimageai">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#132339;
+    --navy-deep:#0b1626;
+    --bone:#f8f3e8;
+    --bone-dim:#eee6d3;
+    --red:#a3372f;
+    --red-deep:#7c261f;
+    --ochre:#bd8a3a;
+    --wood:#4a2e1e;
+    --line: rgba(248,243,232,0.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bone);
+    color:var(--navy-deep);
+    font-family:'Noto Sans JP', sans-serif;
+    line-height:1.9;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.jp-serif{font-family:'Shippori Mincho', serif;letter-spacing:.02em;}
+  .eyebrow{font-family:'Oswald', sans-serif;text-transform:uppercase;letter-spacing:.28em;font-size:.72rem;font-weight:500;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  .mesh-line{stroke-width:1.1;fill:none;}
+
+  header{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1080px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .brand{color:var(--bone);font-family:'Shippori Mincho', serif;font-size:1.28rem;font-weight:700;display:flex;align-items:center;gap:10px;}
+  .brand svg{width:26px;height:26px;flex-shrink:0;}
+  nav ul{list-style:none;display:flex;gap:2px;}
+  nav a{color:var(--bone-dim);font-size:.86rem;padding:10px 16px;position:relative;letter-spacing:.04em;transition:color .2s ease;}
+  nav a:hover{color:var(--bone);}
+  nav a.current{color:var(--bone);}
+  nav a.current::after{content:"";position:absolute;left:16px;right:16px;bottom:6px;height:2px;background:var(--red);}
+  .menu-toggle{display:none;}
+
+  .page-head{background:var(--navy);color:var(--bone);padding:64px 0 54px;position:relative;overflow:hidden;}
+  .page-head-mesh{position:absolute;inset:0;opacity:.14;pointer-events:none;}
+  .page-head-inner{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 32px;}
+  .page-head .eyebrow{color:var(--ochre);margin-bottom:16px;display:block;}
+  .page-head h1{font-size:clamp(1.9rem,4vw,2.6rem);}
+  .page-head p{margin-top:16px;color:var(--bone-dim);font-size:.94rem;max-width:34em;}
+
+  .gallery{padding:70px 0 100px;}
+  .g-section{margin-bottom:74px;}
+  .g-section:last-child{margin-bottom:0;}
+  .g-section-head{display:flex;align-items:baseline;gap:16px;margin-bottom:28px;border-bottom:1px solid #e2d6b9;padding-bottom:16px;}
+  .g-section-head .num{font-family:'Oswald',sans-serif;color:var(--red);font-size:.8rem;letter-spacing:.14em;}
+  .g-section-head h2{font-size:1.35rem;color:var(--navy-deep);}
+
+  .g-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e2d6b9;border:1px solid #e2d6b9;}
+  .g-grid.cols-2{grid-template-columns:repeat(2,1fr);}
+  .g-card{background:var(--bone);padding:26px;display:flex;flex-direction:column;transition:background .2s ease;}
+  .g-card:hover{background:#fffdf8;}
+  .g-figure{
+    aspect-ratio:4/3;background:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:18px;position:relative;overflow:hidden;
+  }
+  .g-figure svg{width:78%;height:78%;}
+  .g-caption-tag{
+    font-family:'Oswald',sans-serif;font-size:.66rem;letter-spacing:.14em;
+    color:var(--ochre);margin-bottom:8px;
+  }
+  .g-card h3{font-size:1.02rem;color:var(--navy-deep);margin-bottom:8px;}
+  .g-card p{font-size:.84rem;color:#5a543f;}
+
+  .g-note{
+    max-width:680px;margin:0 auto 54px;padding:20px 24px;
+    background:var(--bone-dim);border-left:3px solid var(--red);
+    font-size:.86rem;color:#4b4638;
+  }
+
+  @media (max-width:860px){
+    .g-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    nav{display:none;}
+    .menu-toggle{display:inline-flex;background:none;border:none;color:var(--bone);font-family:'Oswald',sans-serif;font-size:.76rem;letter-spacing:.1em;cursor:pointer;}
+    nav.open{display:flex;position:absolute;top:72px;left:0;right:0;background:var(--navy);flex-direction:column;border-top:1px solid var(--line);}
+    nav.open ul{flex-direction:column;width:100%;}
+    nav.open a{display:block;padding:16px 32px;border-bottom:1px solid var(--line);}
+    .g-grid, .g-grid.cols-2{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
+
+  footer{background:var(--navy-deep);color:var(--bone-dim);padding:70px 0 30px;}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:48px;padding-bottom:44px;border-bottom:1px solid var(--line);}
+  footer h3{font-family:'Shippori Mincho',serif;color:var(--bone);font-size:1.1rem;margin-bottom:16px;}
+  footer p{font-size:.85rem;line-height:1.85;}
+  footer ul{list-style:none;font-size:.85rem;}
+  footer li{margin-bottom:10px;}
+  footer a:hover{color:var(--red);}
+  .foot-form{display:flex;flex-direction:column;gap:10px;margin-top:6px;}
+  .foot-form input,.foot-form textarea{
+    background:var(--navy);border:1px solid var(--line);color:var(--bone);
+    padding:10px 12px;font-family:inherit;font-size:.85rem;
+  }
+  .foot-form textarea{resize:vertical;min-height:70px;}
+  .foot-form button{
+    align-self:flex-start;margin-top:4px;background:var(--red);color:var(--bone);border:none;
+    padding:10px 24px;font-family:'Oswald',sans-serif;letter-spacing:.1em;font-size:.78rem;
+    cursor:pointer;transition:background .2s ease;
+  }
+  .foot-form button:hover{background:var(--red-deep);}
+  .foot-bottom{padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.76rem;color:#7a8195;}
+  .noai{max-width:640px;line-height:1.7;}
+  @media (max-width:860px){.foot-grid{grid-template-columns:1fr;gap:36px;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="1" y="1" width="38" height="38" stroke="var(--red)" stroke-width="1.4"/><path d="M9 9L31 31M31 9L9 31M20 9V31M9 20H31" stroke="var(--bone)" stroke-width="0.9" opacity="0.7"/></svg>
+      クロスの学び舎
+    </a>
+    <button class="menu-toggle" id="menuToggle">MENU</button>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="blog.html">日誌</a></li>
+        <li><a class="current" href="gallery.html">ギャラリー</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="page-head">
+  <svg class="page-head-mesh" viewBox="0 0 1080 260" preserveAspectRatio="xMidYMid slice">
+    <g class="mesh-line" stroke="var(--bone)">
+      <path d="M0 0 L340 260 M90 0 L430 260 M180 0 L520 260 M270 0 L610 260 M360 0 L700 260 M450 0 L790 260 M540 0 L880 260 M630 0 L970 260 M720 0 L1060 260 M810 0 L1080 190 M900 0 L1080 100 M990 0 L1080 10"/>
+      <path d="M1080 0 L740 260 M990 0 L650 260 M900 0 L560 260 M810 0 L470 260 M720 0 L380 260 M630 0 L290 260 M540 0 L200 260 M450 0 L110 260 M360 0 L20 260 M270 0 L0 190 M180 0 L0 100 M90 0 L0 10"/>
+    </g>
+  </svg>
+  <div class="page-head-inner">
+    <span class="eyebrow">GALLERY</span>
+    <h1>図版ギャラリー</h1>
+    <p>道具の構造やフィールドの見取り図など、理解を助ける図版を少しずつ描き足していく。</p>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="g-note">写真ではなく、自分の理解を整理するための簡易な図解を中心に置いています。</div>
+
+    <div class="g-section">
+      <div class="g-section-head">
+        <span class="num">01</span>
+        <h2>道具 — クロス(スティック)</h2>
+      </div>
+      <div class="g-grid">
+        <div class="g-card">
+          <div class="g-figure">
+            <svg viewBox="0 0 200 150" fill="none">
+              <path d="M20 140 L70 40" stroke="var(--ochre)" stroke-width="3" stroke-linecap="round"/>
+              <path d="M70 40 C70 20 100 8 118 24 C134 38 128 62 108 68 C90 73 76 60 78 46" stroke="var(--bone)" stroke-width="2.4" fill="none"/>
+              <g stroke="var(--red)" stroke-width="0.9" opacity="0.85">
+                <path d="M82 30 L104 60 M92 26 L112 58 M100 24 L118 50 M76 40 L96 66"/>
+                <path d="M104 60 L82 30 M112 58 L92 26 M118 50 L100 24 M96 66 L76 40"/>
+              </g>
+            </svg>
+          </div>
+          <span class="g-caption-tag">SHAFT & HEAD</span>
+          <h3>クロス全体図</h3>
+          <p>シャフト(柄)とヘッド(網部)から成る基本構造。長さは競技・ポジションで異なる。</p>
+        </div>
+        <div class="g-card">
+          <div class="g-figure">
+            <svg viewBox="0 0 200 150" fill="none">
+              <path d="M40 20 C20 40 20 110 40 130 C60 110 140 110 160 130 C180 110 180 40 160 20 C140 40 60 40 40 20Z" stroke="var(--bone)" stroke-width="2" fill="none"/>
+              <g stroke="var(--red)" stroke-width="0.9" opacity="0.9">
+                <path d="M50 34 L90 118 M66 28 L108 122 M84 26 L124 118 M102 28 L138 108 M118 34 L150 96"/>
+                <path d="M50 100 L146 40 M46 78 L154 62 M52 58 L142 26"/>
+              </g>
+            </svg>
+          </div>
+          <span class="g-caption-tag">POCKET</span>
+          <h3>ポケットの網目</h3>
+          <p>縦糸と横糸(サイドウォール/シューター)が交差し、深さと張りを生む網目構造。</p>
+        </div>
+        <div class="g-card">
+          <div class="g-figure">
+            <svg viewBox="0 0 200 150" fill="none">
+              <rect x="30" y="30" width="140" height="90" rx="4" stroke="var(--bone)" stroke-width="2"/>
+              <text x="100" y="60" text-anchor="middle" fill="var(--ochre)" font-size="11" font-family="Oswald, sans-serif" letter-spacing="1">SHORT</text>
+              <text x="100" y="78" text-anchor="middle" fill="var(--bone-dim)" font-size="9" font-family="Noto Sans JP, sans-serif">攻撃・ミッド向け</text>
+              <text x="100" y="102" text-anchor="middle" fill="var(--ochre)" font-size="11" font-family="Oswald, sans-serif" letter-spacing="1">LONG</text>
+              <line x1="45" y1="88" x2="155" y2="88" stroke="var(--red)" stroke-width="1"/>
+            </svg>
+          </div>
+          <span class="g-caption-tag">LENGTH TYPES</span>
+          <h3>長さの違い</h3>
+          <p>ショートクロス(攻撃・ミッドフィールド)とロングクロス(ディフェンス)で全長が異なる。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-section">
+      <div class="g-section-head">
+        <span class="num">02</span>
+        <h2>フィールド見取り図</h2>
+      </div>
+      <div class="g-grid cols-2">
+        <div class="g-card">
+          <div class="g-figure">
+            <svg viewBox="0 0 240 150" fill="none">
+              <rect x="14" y="20" width="212" height="110" stroke="var(--bone)" stroke-width="2"/>
+              <line x1="120" y1="20" x2="120" y2="130" stroke="var(--bone)" stroke-width="1" opacity="0.6"/>
+              <circle cx="120" cy="75" r="16" stroke="var(--ochre)" stroke-width="1"/>
+              <circle cx="34" cy="75" r="10" stroke="var(--red)" stroke-width="1.4"/>
+              <circle cx="206" cy="75" r="10" stroke="var(--red)" stroke-width="1.4"/>
+              <text x="120" y="142" text-anchor="middle" fill="var(--bone-dim)" font-size="9" font-family="Oswald, sans-serif" letter-spacing="2">FIELD LACROSSE</text>
+            </svg>
+          </div>
+          <span class="g-caption-tag">FIELD</span>
+          <h3>フィールドラクロス</h3>
+          <p>サッカーコートに近い広さ。両端にゴール、中央にフェイスオフサークル。10対10で対戦。</p>
+        </div>
+        <div class="g-card">
+          <div class="g-figure">
+            <svg viewBox="0 0 240 150" fill="none">
+              <rect x="30" y="24" width="180" height="102" rx="10" stroke="var(--bone)" stroke-width="2"/>
+              <rect x="42" y="60" width="18" height="30" stroke="var(--red)" stroke-width="1.4"/>
+              <rect x="180" y="60" width="18" height="30" stroke="var(--red)" stroke-width="1.4"/>
+              <circle cx="120" cy="75" r="14" stroke="var(--ochre)" stroke-width="1"/>
+              <text x="120" y="142" text-anchor="middle" fill="var(--bone-dim)" font-size="9" font-family="Oswald, sans-serif" letter-spacing="2">BOX LACROSSE</text>
+            </svg>
+          </div>
+          <span class="g-caption-tag">ARENA</span>
+          <h3>ボックスラクロス</h3>
+          <p>アイスホッケー場程度の屋内リンクを使用。壁があり、6対6のスピーディな展開になる。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="g-section">
+      <div class="g-section-head">
+        <span class="num">03</span>
+        <h2>網目パターン研究</h2>
+      </div>
+      <div class="g-grid">
+        <div class="g-card">
+          <div class="g-figure">
+            <svg viewBox="0 0 200 150" fill="none">
+              <g stroke="var(--bone)" stroke-width="0.9">
+                <path d="M20 20 L100 130 M40 20 L120 130 M60 20 L140 130 M80 20 L160 130 M100 20 L180 130"/>
+                <path d="M20 130 L100 20 M40 130 L120 20 M60 130 L140 20 M80 130 L160 20 M100 130 L180 20"/>
+              </g>
+            </svg>
+          </div>
+          <span class="g-caption-tag">DIAMOND MESH</span>
+          <h3>ダイヤ網目</h3>
+          <p>最も一般的な交差構造。均一な菱形が連続し、ボールの収まりが安定する。</p>
+        </div>
+        <div class="g-card">
+          <div class="g-figure">
+            <svg viewBox="0 0 200 150" fill="none">
+              <g stroke="var(--ochre)" stroke-width="0.9">
+                <path d="M20 75 Q60 20 100 75 Q140 130 180 75"/>
+                <path d="M20 55 Q60 100 100 55 Q140 10 180 55"/>
+                <path d="M20 95 Q60 140 100 95 Q140 50 180 95"/>
+              </g>
+            </svg>
+          </div>
+          <span class="g-caption-tag">WAVE PATTERN</span>
+          <h3>波状の張り</h3>
+          <p>シューティングストリングの角度によって生まれる曲線的な張りのパターン。</p>
+        </div>
+        <div class="g-card">
+          <div class="g-figure">
+            <svg viewBox="0 0 200 150" fill="none">
+              <g stroke="var(--red)" stroke-width="0.9" opacity="0.9">
+                <rect x="30" y="30" width="20" height="20"/>
+                <rect x="60" y="30" width="20" height="20"/>
+                <rect x="90" y="30" width="20" height="20"/>
+                <rect x="120" y="30" width="20" height="20"/>
+                <rect x="45" y="60" width="20" height="20"/>
+                <rect x="75" y="60" width="20" height="20"/>
+                <rect x="105" y="60" width="20" height="20"/>
+                <rect x="30" y="90" width="20" height="20"/>
+                <rect x="60" y="90" width="20" height="20"/>
+                <rect x="90" y="90" width="20" height="20"/>
+                <rect x="120" y="90" width="20" height="20"/>
+              </g>
+            </svg>
+          </div>
+          <span class="g-caption-tag">WOVEN MOTIF</span>
+          <h3>編み紐モチーフ</h3>
+          <p>先住民のビーズ細工や編み技術に見られる幾何学模様から着想したパターン研究。</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>クロスの学び舎</h3>
+        <p>ラクロスの歴史・ルール・技術を独学でまとめていく個人研究サイトです。北米先住民に由来するこの競技のルーツに敬意を払いながら、学びを記録していきます。</p>
+      </div>
+      <div>
+        <h3>リンク</h3>
+        <ul>
+          <li><a href="https://azaleacreativeroom888.github.io/">Azalea Creative Room</a></li>
+          <li><a href="https://azaleacreativeroom888.github.io/links.html">全サイト一覧</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>お問い合わせ</h3>
+        <form class="foot-form" action="https://formspree.io/f/maqvpvoz" method="POST">
+          <input type="text" name="name" placeholder="お名前" required>
+          <input type="email" name="email" placeholder="メールアドレス" required>
+          <textarea name="message" placeholder="メッセージ" required></textarea>
+          <button type="submit">送信する</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p class="noai">本サイトのテキスト・画像・デザインはすべて生成AIの学習データとしての使用を禁じます。(No AI training on any text, images, or design on this site.)</p>
+      <p>&copy; 2026 クロスの学び舎</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mainNav');
+  if(toggle){ toggle.addEventListener('click', () => nav.classList.toggle('open')); }
+</script>
+</body>
+</html>
