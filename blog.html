@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>学習日誌 | クロスの学び舎</title>
+<meta name="description" content="ラクロスについて学んだことを日付ごとに記録する日誌。">
+<meta name="robots" content="noai, noimageai">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#132339;
+    --navy-deep:#0b1626;
+    --bone:#f8f3e8;
+    --bone-dim:#eee6d3;
+    --red:#a3372f;
+    --red-deep:#7c261f;
+    --ochre:#bd8a3a;
+    --wood:#4a2e1e;
+    --line: rgba(248,243,232,0.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bone);
+    color:var(--navy-deep);
+    font-family:'Noto Sans JP', sans-serif;
+    line-height:1.9;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.jp-serif{font-family:'Shippori Mincho', serif;letter-spacing:.02em;}
+  .eyebrow{
+    font-family:'Oswald', sans-serif;text-transform:uppercase;
+    letter-spacing:.28em;font-size:.72rem;font-weight:500;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+
+  .mesh-divider{width:100%;height:34px;display:block;}
+  .mesh-line{stroke-width:1.1;fill:none;}
+
+  header{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:1px solid var(--line);}
+  .nav-inner{
+    max-width:1080px;margin:0 auto;padding:0 32px;
+    display:flex;align-items:center;justify-content:space-between;height:72px;
+  }
+  .brand{color:var(--bone);font-family:'Shippori Mincho', serif;font-size:1.28rem;font-weight:700;display:flex;align-items:center;gap:10px;}
+  .brand svg{width:26px;height:26px;flex-shrink:0;}
+  nav ul{list-style:none;display:flex;gap:2px;}
+  nav a{color:var(--bone-dim);font-size:.86rem;padding:10px 16px;position:relative;letter-spacing:.04em;transition:color .2s ease;}
+  nav a:hover{color:var(--bone);}
+  nav a.current{color:var(--bone);}
+  nav a.current::after{content:"";position:absolute;left:16px;right:16px;bottom:6px;height:2px;background:var(--red);}
+  .menu-toggle{display:none;}
+
+  .page-head{background:var(--navy);color:var(--bone);padding:64px 0 54px;position:relative;overflow:hidden;}
+  .page-head-mesh{position:absolute;inset:0;opacity:.14;pointer-events:none;}
+  .page-head-inner{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 32px;}
+  .page-head .eyebrow{color:var(--ochre);margin-bottom:16px;display:block;}
+  .page-head h1{font-size:clamp(1.9rem,4vw,2.6rem);}
+  .page-head p{margin-top:16px;color:var(--bone-dim);font-size:.94rem;max-width:34em;}
+
+  /* ---------- diary list ---------- */
+  .diary{padding:70px 0 100px;}
+  .diary-list{max-width:680px;margin:0 auto;}
+  .entry{
+    display:grid;grid-template-columns:110px 1fr;gap:26px;
+    padding:26px 0;border-bottom:1px solid #e2d6b9;
+  }
+  .entry:first-child{padding-top:0;}
+  .entry-date{
+    font-family:'Oswald',sans-serif;
+    color:var(--red);font-size:.82rem;letter-spacing:.06em;
+    padding-top:2px;
+  }
+  .entry-date .yr{display:block;color:#9a9280;font-size:.72rem;letter-spacing:.1em;margin-top:2px;}
+  .entry-text{font-size:.95rem;color:#3a362a;}
+  .entry-text .tag{
+    display:inline-block;
+    font-family:'Oswald',sans-serif;
+    font-size:.66rem;letter-spacing:.12em;
+    color:var(--ochre);
+    border:1px solid var(--ochre);
+    padding:2px 8px;margin-bottom:10px;
+  }
+
+  .diary-note{
+    max-width:680px;margin:0 auto 54px;
+    padding:20px 24px;
+    background:var(--bone-dim);
+    border-left:3px solid var(--red);
+    font-size:.86rem;color:#4b4638;
+  }
+
+  footer{background:var(--navy-deep);color:var(--bone-dim);padding:70px 0 30px;}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:48px;padding-bottom:44px;border-bottom:1px solid var(--line);}
+  footer h3{font-family:'Shippori Mincho',serif;color:var(--bone);font-size:1.1rem;margin-bottom:16px;}
+  footer p{font-size:.85rem;line-height:1.85;}
+  footer ul{list-style:none;font-size:.85rem;}
+  footer li{margin-bottom:10px;}
+  footer a:hover{color:var(--red);}
+  .foot-form{display:flex;flex-direction:column;gap:10px;margin-top:6px;}
+  .foot-form input,.foot-form textarea{
+    background:var(--navy);border:1px solid var(--line);color:var(--bone);
+    padding:10px 12px;font-family:inherit;font-size:.85rem;
+  }
+  .foot-form textarea{resize:vertical;min-height:70px;}
+  .foot-form button{
+    align-self:flex-start;margin-top:4px;background:var(--red);color:var(--bone);border:none;
+    padding:10px 24px;font-family:'Oswald',sans-serif;letter-spacing:.1em;font-size:.78rem;
+    cursor:pointer;transition:background .2s ease;
+  }
+  .foot-form button:hover{background:var(--red-deep);}
+  .foot-bottom{padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.76rem;color:#7a8195;}
+  .noai{max-width:640px;line-height:1.7;}
+
+  @media (max-width:860px){.foot-grid{grid-template-columns:1fr;gap:36px;}}
+  @media (max-width:640px){
+    nav{display:none;}
+    .menu-toggle{display:inline-flex;background:none;border:none;color:var(--bone);font-family:'Oswald',sans-serif;font-size:.76rem;letter-spacing:.1em;cursor:pointer;}
+    nav.open{display:flex;position:absolute;top:72px;left:0;right:0;background:var(--navy);flex-direction:column;border-top:1px solid var(--line);}
+    nav.open ul{flex-direction:column;width:100%;}
+    nav.open a{display:block;padding:16px 32px;border-bottom:1px solid var(--line);}
+    .entry{grid-template-columns:1fr;gap:6px;}
+    .entry-date{display:flex;align-items:baseline;gap:8px;}
+    .entry-date .yr{margin-top:0;}
+  }
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="1" y="1" width="38" height="38" stroke="var(--red)" stroke-width="1.4"/><path d="M9 9L31 31M31 9L9 31M20 9V31M9 20H31" stroke="var(--bone)" stroke-width="0.9" opacity="0.7"/></svg>
+      クロスの学び舎
+    </a>
+    <button class="menu-toggle" id="menuToggle">MENU</button>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a class="current" href="blog.html">日誌</a></li>
+        <li><a href="gallery.html">ギャラリー</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="page-head">
+  <svg class="page-head-mesh" viewBox="0 0 1080 260" preserveAspectRatio="xMidYMid slice">
+    <g class="mesh-line" stroke="var(--bone)">
+      <path d="M0 0 L340 260 M90 0 L430 260 M180 0 L520 260 M270 0 L610 260 M360 0 L700 260 M450 0 L790 260 M540 0 L880 260 M630 0 L970 260 M720 0 L1060 260 M810 0 L1080 190 M900 0 L1080 100 M990 0 L1080 10"/>
+      <path d="M1080 0 L740 260 M990 0 L650 260 M900 0 L560 260 M810 0 L470 260 M720 0 L380 260 M630 0 L290 260 M540 0 L200 260 M450 0 L110 260 M360 0 L20 260 M270 0 L0 190 M180 0 L0 100 M90 0 L0 10"/>
+    </g>
+  </svg>
+  <div class="page-head-inner">
+    <span class="eyebrow">DIARY</span>
+    <h1>学習日誌</h1>
+    <p>その日学んだこと・気づいたことだけを、日付とともに淡々と書き留めていく。</p>
+  </div>
+</section>
+
+<section class="diary">
+  <div class="wrap">
+    <div class="diary-note">日付と短い文章だけのシンプルな記録形式です。長い解説は他のページにまとめます。</div>
+    <div class="diary-list">
+
+      <div class="entry">
+        <div class="entry-date">7月31日<span class="yr">2026</span></div>
+        <div class="entry-text">
+          <span class="tag">START</span>
+          <p>サイトを作り始めた。まずはラクロスの起源について調べ直すところから。「クリエイターズ・ゲーム」という呼び方を初めて知った。</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">7月25日<span class="yr">2026</span></div>
+        <div class="entry-text">
+          <p>クレイドリングの動きを動画で確認。手首だけでなく、腕全体のしなりを使うのがコツらしい。次は実際にスティックを触ってみたい。</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">7月18日<span class="yr">2026</span></div>
+        <div class="entry-text">
+          <span class="tag">RULE</span>
+          <p>フィールドラクロスとボックスラクロスの違いを整理。人数もコートの広さもかなり違うことに驚いた。</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="entry-date">7月10日<span class="yr">2026</span></div>
+        <div class="entry-text">
+          <p>ポケットの深さで扱いやすさが変わると知り、道具そのものへの興味が湧いた。次はスティックの構造を調べる。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>クロスの学び舎</h3>
+        <p>ラクロスの歴史・ルール・技術を独学でまとめていく個人研究サイトです。北米先住民に由来するこの競技のルーツに敬意を払いながら、学びを記録していきます。</p>
+      </div>
+      <div>
+        <h3>リンク</h3>
+        <ul>
+          <li><a href="https://azaleacreativeroom888.github.io/">Azalea Creative Room</a></li>
+          <li><a href="https://azaleacreativeroom888.github.io/links.html">全サイト一覧</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>お問い合わせ</h3>
+        <form class="foot-form" action="https://formspree.io/f/maqvpvoz" method="POST">
+          <input type="text" name="name" placeholder="お名前" required>
+          <input type="email" name="email" placeholder="メールアドレス" required>
+          <textarea name="message" placeholder="メッセージ" required></textarea>
+          <button type="submit">送信する</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p class="noai">本サイトのテキスト・画像・デザインはすべて生成AIの学習データとしての使用を禁じます。(No AI training on any text, images, or design on this site.)</p>
+      <p>&copy; 2026 クロスの学び舎</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mainNav');
+  if(toggle){ toggle.addEventListener('click', () => nav.classList.toggle('open')); }
+</script>
+</body>
+</html>
