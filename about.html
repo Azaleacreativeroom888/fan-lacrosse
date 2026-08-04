@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About | クロスの学び舎</title>
+<meta name="description" content="クロスの学び舎について。運営者とサイトの目的の紹介。">
+<meta name="robots" content="noai, noimageai">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Noto+Sans+JP:wght@300;400;500;700&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#132339;
+    --navy-deep:#0b1626;
+    --bone:#f8f3e8;
+    --bone-dim:#eee6d3;
+    --red:#a3372f;
+    --red-deep:#7c261f;
+    --ochre:#bd8a3a;
+    --wood:#4a2e1e;
+    --line: rgba(248,243,232,0.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bone);
+    color:var(--navy-deep);
+    font-family:'Noto Sans JP', sans-serif;
+    line-height:1.9;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.jp-serif{font-family:'Shippori Mincho', serif;letter-spacing:.02em;}
+  .eyebrow{font-family:'Oswald', sans-serif;text-transform:uppercase;letter-spacing:.28em;font-size:.72rem;font-weight:500;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;}
+  .mesh-line{stroke-width:1.1;fill:none;}
+
+  header{position:sticky;top:0;z-index:50;background:var(--navy);border-bottom:1px solid var(--line);}
+  .nav-inner{max-width:1080px;margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .brand{color:var(--bone);font-family:'Shippori Mincho', serif;font-size:1.28rem;font-weight:700;display:flex;align-items:center;gap:10px;}
+  .brand svg{width:26px;height:26px;flex-shrink:0;}
+  nav ul{list-style:none;display:flex;gap:2px;}
+  nav a{color:var(--bone-dim);font-size:.86rem;padding:10px 16px;position:relative;letter-spacing:.04em;transition:color .2s ease;}
+  nav a:hover{color:var(--bone);}
+  nav a.current{color:var(--bone);}
+  nav a.current::after{content:"";position:absolute;left:16px;right:16px;bottom:6px;height:2px;background:var(--red);}
+  .menu-toggle{display:none;}
+
+  .page-head{background:var(--navy);color:var(--bone);padding:64px 0 54px;position:relative;overflow:hidden;text-align:center;}
+  .page-head-mesh{position:absolute;inset:0;opacity:.14;pointer-events:none;}
+  .page-head-inner{position:relative;z-index:2;max-width:1080px;margin:0 auto;padding:0 32px;}
+  .page-head::before{
+    content:"";display:block;width:120px;height:1px;
+    background:linear-gradient(90deg, transparent, var(--ochre), transparent);
+    margin:0 auto 26px;position:relative;z-index:2;
+  }
+  .page-head .eyebrow{color:var(--ochre);margin-bottom:16px;display:block;}
+  .page-head h1{font-size:clamp(1.9rem,4vw,2.6rem);letter-spacing:.12em;}
+  .page-head p{margin-top:16px;color:var(--bone-dim);font-size:.94rem;max-width:34em;margin-left:auto;margin-right:auto;}
+
+  .about-main{padding:80px 0 40px;}
+
+  .section-label{
+    font-family:'Oswald', sans-serif;font-size:.72rem;color:var(--red);
+    letter-spacing:.22em;text-transform:uppercase;
+    display:flex;align-items:center;gap:14px;margin-bottom:24px;
+  }
+  .section-label::after{content:"";flex:1;height:1px;background:#e2d6b9;}
+
+  .profile{
+    display:grid;grid-template-columns:220px 1fr;gap:44px;align-items:start;
+    margin-bottom:70px;
+  }
+  .profile-badge{
+    aspect-ratio:1;background:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .profile-badge svg{width:62%;height:62%;}
+  .profile h2{font-size:1.5rem;margin-bottom:14px;}
+  .profile p{font-size:.92rem;color:#4b4638;margin-bottom:12px;}
+  .profile p strong{color:var(--navy);font-weight:500;}
+
+  .reason-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:#e2d6b9;border:1px solid #e2d6b9;margin-bottom:70px;
+  }
+  .reason-card{background:var(--bone);padding:30px 26px;}
+  .reason-card .r-num{font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:.16em;color:var(--ochre);display:block;margin-bottom:14px;}
+  .reason-card h3{font-size:1.02rem;color:var(--navy-deep);margin-bottom:10px;}
+  .reason-card p{font-size:.86rem;color:#5a543f;}
+
+  .policy-block{
+    background:var(--bone-dim);border-left:3px solid var(--red);
+    padding:28px 30px;margin-bottom:70px;
+  }
+  .policy-block h2{font-size:1.3rem;margin-bottom:16px;}
+  .policy-block ul{list-style:none;font-size:.9rem;color:#4b4638;}
+  .policy-block li{padding:8px 0;border-bottom:1px dashed #d8cba4;}
+  .policy-block li:last-child{border-bottom:none;}
+  .policy-block li strong{color:var(--navy);font-weight:500;margin-right:8px;}
+
+  /* ---------- link cards (reference-inspired) ---------- */
+  .link-grid{
+    display:grid;grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+    gap:14px;margin-bottom:70px;
+  }
+  .link-card{
+    display:flex;align-items:center;gap:16px;
+    background:var(--bone);border:1px solid #e2d6b9;
+    padding:16px 18px;position:relative;overflow:hidden;
+    transition:border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .link-card::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+    background:linear-gradient(180deg, var(--red), transparent);
+  }
+  .link-card:hover{
+    border-color:rgba(163,55,47,.5);
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(19,35,57,.1);
+  }
+  .link-icon{
+    width:44px;height:44px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--navy);color:var(--ochre);
+    font-family:'Oswald',sans-serif;font-size:.72rem;letter-spacing:.04em;
+  }
+  .link-text{flex:1;min-width:0;}
+  .link-name{display:block;font-size:.92rem;font-weight:500;color:var(--navy-deep);margin-bottom:3px;}
+  .link-desc{display:block;font-size:.78rem;color:#8a8268;}
+  .link-arrow{font-family:'Oswald',sans-serif;font-size:1.1rem;color:#c9bd9a;flex-shrink:0;transition:color .2s ease, transform .2s ease;}
+  .link-card:hover .link-arrow{color:var(--red);transform:translateX(3px);}
+
+  footer{background:var(--navy-deep);color:var(--bone-dim);padding:70px 0 30px;}
+  .foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:48px;padding-bottom:44px;border-bottom:1px solid var(--line);}
+  footer h3{font-family:'Shippori Mincho',serif;color:var(--bone);font-size:1.1rem;margin-bottom:16px;}
+  footer p{font-size:.85rem;line-height:1.85;}
+  footer ul{list-style:none;font-size:.85rem;}
+  footer li{margin-bottom:10px;}
+  footer a:hover{color:var(--red);}
+  .foot-form{display:flex;flex-direction:column;gap:10px;margin-top:6px;}
+  .foot-form input,.foot-form textarea{
+    background:var(--navy);border:1px solid var(--line);color:var(--bone);
+    padding:10px 12px;font-family:inherit;font-size:.85rem;
+  }
+  .foot-form textarea{resize:vertical;min-height:70px;}
+  .foot-form button{
+    align-self:flex-start;margin-top:4px;background:var(--red);color:var(--bone);border:none;
+    padding:10px 24px;font-family:'Oswald',sans-serif;letter-spacing:.1em;font-size:.78rem;
+    cursor:pointer;transition:background .2s ease;
+  }
+  .foot-form button:hover{background:var(--red-deep);}
+  .foot-bottom{padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.76rem;color:#7a8195;}
+  .noai{max-width:640px;line-height:1.7;}
+
+  @media (max-width:860px){
+    .profile{grid-template-columns:1fr;}
+    .profile-badge{width:140px;}
+    .reason-grid{grid-template-columns:1fr;}
+    .foot-grid{grid-template-columns:1fr;gap:36px;}
+  }
+  @media (max-width:640px){
+    nav{display:none;}
+    .menu-toggle{display:inline-flex;background:none;border:none;color:var(--bone);font-family:'Oswald',sans-serif;font-size:.76rem;letter-spacing:.1em;cursor:pointer;}
+    nav.open{display:flex;position:absolute;top:72px;left:0;right:0;background:var(--navy);flex-direction:column;border-top:1px solid var(--line);}
+    nav.open ul{flex-direction:column;width:100%;}
+    nav.open a{display:block;padding:16px 32px;border-bottom:1px solid var(--line);}
+    .link-grid{grid-template-columns:1fr;}
+  }
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 40 40" fill="none"><rect x="1" y="1" width="38" height="38" stroke="var(--red)" stroke-width="1.4"/><path d="M9 9L31 31M31 9L9 31M20 9V31M9 20H31" stroke="var(--bone)" stroke-width="0.9" opacity="0.7"/></svg>
+      クロスの学び舎
+    </a>
+    <button class="menu-toggle" id="menuToggle">MENU</button>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="index.html">ホーム</a></li>
+        <li><a href="blog.html">日誌</a></li>
+        <li><a href="gallery.html">ギャラリー</a></li>
+        <li><a class="current" href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="page-head">
+  <svg class="page-head-mesh" viewBox="0 0 1080 260" preserveAspectRatio="xMidYMid slice">
+    <g class="mesh-line" stroke="var(--bone)">
+      <path d="M0 0 L340 260 M90 0 L430 260 M180 0 L520 260 M270 0 L610 260 M360 0 L700 260 M450 0 L790 260 M540 0 L880 260 M630 0 L970 260 M720 0 L1060 260 M810 0 L1080 190 M900 0 L1080 100 M990 0 L1080 10"/>
+      <path d="M1080 0 L740 260 M990 0 L650 260 M900 0 L560 260 M810 0 L470 260 M720 0 L380 260 M630 0 L290 260 M540 0 L200 260 M450 0 L110 260 M360 0 L20 260 M270 0 L0 190 M180 0 L0 100 M90 0 L0 10"/>
+    </g>
+  </svg>
+  <div class="page-head-inner">
+    <span class="eyebrow">ABOUT</span>
+    <h1>About</h1>
+    <p>このサイトを作った経緯と、運営者について。</p>
+  </div>
+</section>
+
+<main class="about-main">
+  <div class="wrap">
+
+    <p class="section-label">運営者について</p>
+    <div class="profile">
+      <div class="profile-badge">
+        <svg viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="28" stroke="var(--ochre)" stroke-width="1.2"/>
+          <path d="M32 8V56M8 32H56M16 16L48 48M48 16L16 48" stroke="var(--bone)" stroke-width="0.9" opacity="0.7"/>
+          <circle cx="32" cy="32" r="5" fill="var(--red)"/>
+        </svg>
+      </div>
+      <div>
+        <h2>Azalea72</h2>
+        <p><strong>Azalea Creative Room</strong>という名前で、漫画制作を中心に様々な創作活動をしています。もともとの専門はラクロスではなく、フィギュアスケートやゴルフ、将棋、囲碁など、興味を持ったテーマごとに学習サイトを作るのが趣味になっています。</p>
+        <p>このサイトは、その中でも新しく学び始めた<strong>ラクロス</strong>について、ルールも歴史もまだ手探りの状態から少しずつ知識を積み上げていく記録として始めました。専門家ではなく、あくまで一学習者としての視点で書いています。</p>
+      </div>
+    </div>
+
+    <p class="section-label">なぜラクロスを学ぶのか</p>
+    <div class="reason-grid">
+      <div class="reason-card">
+        <span class="r-num">01</span>
+        <h3>起源への興味</h3>
+        <p>競技の起源が北米先住民の文化にあると知り、スポーツとしてだけでなく歴史・文化としても学びたいと思った。</p>
+      </div>
+      <div class="reason-card">
+        <span class="r-num">02</span>
+        <h3>道具への関心</h3>
+        <p>クロス(スティック)の網目構造など、道具そのものの作りに惹かれ、仕組みを理解したくなった。</p>
+      </div>
+      <div class="reason-card">
+        <span class="r-num">03</span>
+        <h3>継続の記録</h3>
+        <p>これまでの他競技サイトと同じく、学びを可視化することで自分自身のモチベーションを保つのが目的。</p>
+      </div>
+    </div>
+
+    <p class="section-label">サイトの方針</p>
+    <div class="policy-block">
+      <h2>運営ポリシー</h2>
+      <ul>
+        <li><strong>目的</strong>個人的な学習記録であり、専門的な指導や解説を提供するものではありません。</li>
+        <li><strong>更新</strong>不定期に学んだことを日誌ページへ追記していきます。</li>
+        <li><strong>誤りについて</strong>内容に誤りがあれば、フォームからご指摘いただけると助かります。</li>
+        <li><strong>敬意</strong>ラクロスのルーツである北米先住民の文化に敬意を持って発信することを心がけています。</li>
+      </ul>
+    </div>
+
+    <p class="section-label">Azalea Creative Room の他サイト</p>
+    <div class="link-grid">
+      <a class="link-card" href="https://azaleacreativeroom888.github.io/" target="_blank" rel="noopener">
+        <div class="link-icon">HOME</div>
+        <div class="link-text">
+          <span class="link-name">Azalea Creative Room</span>
+          <span class="link-desc">漫画・創作のメインサイト</span>
+        </div>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://azaleacreativeroom888.github.io/links.html" target="_blank" rel="noopener">
+        <div class="link-icon">LINK</div>
+        <div class="link-text">
+          <span class="link-name">全サイト一覧</span>
+          <span class="link-desc">これまで作った学習・ファンサイト集</span>
+        </div>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://www.pixiv.net/users/105728284" target="_blank" rel="noopener">
+        <div class="link-icon">ART</div>
+        <div class="link-text">
+          <span class="link-name">Pixiv</span>
+          <span class="link-desc">イラスト・漫画作品</span>
+        </div>
+        <span class="link-arrow">›</span>
+      </a>
+      <a class="link-card" href="https://bsky.app/profile/azaleaazalea88.bsky.social" target="_blank" rel="noopener">
+        <div class="link-icon">SNS</div>
+        <div class="link-text">
+          <span class="link-name">Bluesky</span>
+          <span class="link-desc">近況・お知らせ</span>
+        </div>
+        <span class="link-arrow">›</span>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h3>クロスの学び舎</h3>
+        <p>ラクロスの歴史・ルール・技術を独学でまとめていく個人研究サイトです。北米先住民に由来するこの競技のルーツに敬意を払いながら、学びを記録していきます。</p>
+      </div>
+      <div>
+        <h3>リンク</h3>
+        <ul>
+          <li><a href="https://azaleacreativeroom888.github.io/">Azalea Creative Room</a></li>
+          <li><a href="https://azaleacreativeroom888.github.io/links.html">全サイト一覧</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>お問い合わせ</h3>
+        <form class="foot-form" action="https://formspree.io/f/maqvpvoz" method="POST">
+          <input type="text" name="name" placeholder="お名前" required>
+          <input type="email" name="email" placeholder="メールアドレス" required>
+          <textarea name="message" placeholder="メッセージ" required></textarea>
+          <button type="submit">送信する</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p class="noai">本サイトのテキスト・画像・デザインはすべて生成AIの学習データとしての使用を禁じます。(No AI training on any text, images, or design on this site.)</p>
+      <p>&copy; 2026 クロスの学び舎</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const nav = document.getElementById('mainNav');
+  if(toggle){ toggle.addEventListener('click', () => nav.classList.toggle('open')); }
+</script>
+</body>
+</html>
